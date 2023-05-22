@@ -1,5 +1,5 @@
 {
-  "name": "motoko-frontend-react-ts",
+  "name": "react_frontend",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",

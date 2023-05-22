@@ -10,7 +10,7 @@ import "@connect2ic/core/style.css"
 /*
  * Import canister definitions like this:
  */
-import * as day2 from "@ic/day2"
+import * as homework_diary from "../.dfx/local/canisters/homework_diary"
 /*
  * Some examples to get you started
  */
@@ -59,11 +59,11 @@ function App() {
 
 const client = createClient({
   canisters: {
-    homework_dairy: { canisterId: day2.canisterId, idlFactory: day2.idlFactory }
+    homework_dairy: homework_diary
   },
   providers: defaultProviders,
   globalProviderConfig: {
-    whitelist: [day2.canisterId],
+    whitelist: [homework_diary.canisterId],
     dev: import.meta.env.DEV,
   },
 })
