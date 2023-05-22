@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useCanister, useConnect } from "@connect2ic/react"
 import { HomeWork } from "@model/model"
-import { _SERVICE } from "@ic/day2/day2.did"
+import { _SERVICE } from "@ic/homework_diary/homework_diary.did"
 import { DeleteHomework } from "@component/DeleteHomework"
 import { CheckHomework } from "@component/CheckHomework"
 

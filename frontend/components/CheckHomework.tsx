@@ -1,6 +1,6 @@
 import React from "react"
 import { useCanister } from "@connect2ic/react"
-import { _SERVICE } from "@ic/day2/day2.did"
+import { _SERVICE } from "@ic/homework_diary/homework_diary.did"
 
 export interface CheckHomeworkProps {
     homeworkId: number;

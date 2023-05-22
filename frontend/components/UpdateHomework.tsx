@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useConnect, useCanister } from "@connect2ic/react"
 import { CreateUpdateHomeWork, HomeWork } from "@model/model"
-import { _SERVICE } from "@ic/day2/day2.did";
+import { _SERVICE } from "@ic/homework_diary/homework_diary.did";
 
 export interface UpdateHomeworkProps {
   homeworkId: number;

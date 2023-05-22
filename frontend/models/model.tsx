@@ -1,4 +1,4 @@
-import { Time } from "@ic/day2/day2.did";
+import { Time } from "@ic/homework_diary/homework_diary.did";
 
 export interface HomeWork {
     id: number,
