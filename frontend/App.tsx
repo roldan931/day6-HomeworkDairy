@@ -10,7 +10,7 @@ import "@connect2ic/core/style.css"
 /*
  * Import canister definitions like this:
  */
-import * as homework_diary from "../.dfx/local/canisters/homework_diary"
+import * as homework_diary from "@ic/homework_diary"
 /*
  * Some examples to get you started
  */
