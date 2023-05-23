@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useCallback, useState } from "react"
 import logo from "./assets/dfinity.svg"
 /*
  * Connect2ic provides essential utilities for IC app development
@@ -21,32 +21,29 @@ import { HomeworkDairy } from "@component/HomeworkDairy"
 function App() {
   const [homeworkId, setHomeworkId] = useState<number>()
 
-  const sendHomeworkId = (id: number) => {
+  const sendHomeworkId = useCallback((id: number) => {
     setHomeworkId(id)
-  }
+  }, [homeworkId]); // specify all useCallback dependencies
 
   return (
-    <div className="App">
-      <div className="auth-section">
+    <div className="">
+      <div className="fixed top-0 right-0 p-1">
         <ConnectButton />
       </div>
       <ConnectDialog />
 
-      <header className="App-header">
+      <header className="flex flex-col justify-center text-center">
         <img src={logo} className="App-logo" alt="logo" />
-        <p className="slogan">
-          React+TypeScript Template
+        <p className="text-3xl font-bold underline">
+          Homework Dairy
         </p>
-        <p className="twitter">by <a href="https://twitter.com/miamaruq">@miamaruq</a></p>
+        <p> by <a href="https://github.com/roldan931/day6-HomeworkDairy">rroldan9612#6498</a></p>
       </header>
 
-      <p className="examples-title">
-        Examples
-      </p>
       <div className="examples">
         {
           homeworkId ? (
-            <UpdateHomework homeworkId={homeworkId} />
+            <UpdateHomework homeworkId={homeworkId} onCallback={sendHomeworkId} />
           ) : (
             <CreationHomework />
           )

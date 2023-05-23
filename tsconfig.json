@@ -29,6 +29,7 @@
     }
   },
   "include": [
-    "./frontend"
+    "./frontend",
+    "./src/declarations"
   ]
 }

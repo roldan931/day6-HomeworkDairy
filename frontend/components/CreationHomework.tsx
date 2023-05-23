@@ -9,7 +9,7 @@ const CreationHomework = () => {
   const [homeworkDairy] = useCanister<_SERVICE>("homework_dairy", { mode: "anonymous" })
   const [title, setTitle] = useState<string>()
   const [description, setDescription] = useState<string>()
-  const [completed, setCompleted] = useState<boolean>()
+  const [completed, setCompleted] = useState<boolean>(false)
 
   const onCreationHomework = async () => {
     let content: CreateUpdateHomeWork = {
@@ -23,10 +23,11 @@ const CreationHomework = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     await onCreationHomework();
+    window.location.reload()
   }
 
   return (
-    <div className="example">
+    <div className="flex px-24 pt-9">
       {isConnected ? (
         <>
           <form onSubmit={handleSubmit}>
@@ -46,7 +47,7 @@ const CreationHomework = () => {
           </form>
         </>
       ) : (
-        <p className="example-disabled">Connect with a wallet to access this creation homework</p>
+        <></>
       )}
     </div>
   )

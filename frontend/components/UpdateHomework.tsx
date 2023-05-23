@@ -5,6 +5,7 @@ import { _SERVICE } from "@ic/homework_diary/homework_diary.did";
 
 export interface UpdateHomeworkProps {
   homeworkId: number;
+  onCallback: (id: number) => void;
 }
 
 const UpdateHomework = (props: UpdateHomeworkProps) => {
@@ -23,10 +24,11 @@ const UpdateHomework = (props: UpdateHomeworkProps) => {
   }, [props.homeworkId])
 
   const getHomework = async () => {
-    const message = await homeworkDairy.getHomework(props.homeworkId) as HomeWork
-    setTitle(message.title)
-    setDescription(message.description)
-    setCompleted(message.completed)
+    const result = await homeworkDairy.getHomework(props.homeworkId) as any
+    const hm = result.ok as HomeWork;
+    setTitle(hm.title)
+    setDescription(hm.description)
+    setCompleted(hm.completed)
   }
 
   const onUpdateHomework = async () => {
@@ -41,10 +43,11 @@ const UpdateHomework = (props: UpdateHomeworkProps) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     await onUpdateHomework();
+    props.onCallback(undefined);
   }
 
   return (
-    <div className="example">
+    <div className="flex px-24 pt-9">
       {isConnected ? (
         <>
           <form onSubmit={handleSubmit}>
@@ -54,17 +57,17 @@ const UpdateHomework = (props: UpdateHomeworkProps) => {
             </div>
             <div>
               <label htmlFor="inpDescription">Description</label>
-              <input id="inpDescription" type="text" onChange={(event) => setDescription(event.target.value)} />
+              <input id="inpDescription" type="text" value={description} onChange={(event) => setDescription(event.target.value)} />
             </div>
             <div>
               <label htmlFor="inpCompleted">Is completed</label>
-              <input id="inpCompleted" type="checkbox" onChange={(event) => setCompleted(event.target.checked)} />
+              <input id="inpCompleted" type="checkbox" defaultChecked={completed} onChange={(event) => setCompleted(event.target.checked)} />
             </div>
-            <input className="connect-button" type="submit" value="Creation Homework" />
+            <input className="connect-button" type="submit" value="Update Homework" />
           </form>
         </>
       ) : (
-        <p className="example-disabled">Connect with a wallet to access this update homework</p>
+        <></>
       )}
     </div>
   )
